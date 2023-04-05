@@ -1,0 +1,141 @@
+<div class="mx-auto my-shadow my-rounded-corner p-4">
+  <div class="row g-0">
+    <div class="col-4">
+      <div class="d-flex justify-content-center align-items-center">
+        <img
+          src="../../assets/images/mobiles/1/{{ imageIndex }}.jpg"
+          alt="image"
+          class="w-100 my-rounded-corner"
+        />
+      </div>
+      <div
+        class="image-thumbnails d-flex justify-content-between align-items-center mt-5"
+      >
+        <img
+          src="../../assets/images/mobiles/1/1.jpg"
+          (click)="imageIndex = 1"
+          alt="image-thumbnails"
+        />
+        <img
+          src="../../assets/images/mobiles/1/2.jpg"
+          (click)="imageIndex = 2"
+          alt="image-thumbnails"
+        />
+        <img
+          src="../../assets/images/mobiles/1/3.jpg"
+          (click)="imageIndex = 3"
+          alt="image-thumbnails"
+        />
+        <img
+          src="../../assets/images/mobiles/1/4.jpg"
+          (click)="imageIndex = 4"
+          alt="image-thumbnails"
+        />
+        <img
+          src="../../assets/images/mobiles/1/5.jpg"
+          (click)="imageIndex = 5"
+          alt="image-thumbnails"
+        />
+      </div>
+    </div>
+
+    <div class="col-8">
+      <div class="card">
+        <div class="card-header">
+          <h2>Product Name</h2>
+        </div>
+        <h1 class="text-danger">Price</h1>
+        <h6>11 products are available</h6>
+        <div class="button-position d-flex justify-content-center">
+          <button
+            class="btn btn-outline-danger d-flex justify-content-center align-items-center mb-5"
+            type="button"
+          >
+            <div
+              class="btn-content d-flex justify-content-center align-items-center gap-1"
+            >
+              <span nz-icon nzType="shopping" nzTheme="outline"></span> Add to
+              Cart
+            </div>
+          </button>
+        </div>
+        <div class="card-body">
+          <h5 class="card-text">Description</h5>
+          <ul class="list-group">
+            <li
+              class="list-group-item list-group-item-action"
+              *ngFor="let item of [1, 1, 1, 1]"
+            >
+              {{ item }}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row g-0">
+    <div class="col-12 pt-4 pb-3">
+      <div class="d-flex justify-content-center mb-3">
+        <h4
+          class="border border-secondary text-center py-2 my-rounded-corner w-25"
+        >
+          Related Products
+        </h4>
+      </div>
+      <app-suggested-products></app-suggested-products>
+    </div>
+  </div>
+
+  <div class="row g-0 my-4">
+    <div
+      class="d-flex justify-content-center align-items-center flex-column mb-3"
+    >
+      <h4
+        class="border border-secondary text-center py-2 my-rounded-corner w-25"
+      >
+        Give Your Review
+      </h4>
+      <h6 class="mt-2">Write Your Review</h6>
+      <textarea
+        class="form-control"
+        id="exampleFormControlTextarea1"
+        rows="3"
+      ></textarea>
+      <div class="d-flex justify-content-start w-100">
+        <button class="btn btn-outline-secondary mt-3" type="button">
+          Save Review
+        </button>
+      </div>
+      <div class="answers">
+        <h6 class="text-danger">Login first, then enter the review.</h6>
+        <h6 class="text-danger">Review Cannot Be Empty!</h6>
+        <h6 class="text-success">Review Saved Successfully!</h6>
+      </div>
+    </div>
+    <div class="col p-3">
+      <h3>Other Reviews</h3>
+      <h6 *ngIf="1">No Reviews Yet!</h6>
+      <div class="card mt-3" *ngFor="let review of [1, 2, 3]">
+        <div class="card-header d-flex justify-content-between">
+          <div class="card-text">
+            <h6>Johny Vadagrei</h6>
+          </div>
+          <div class="card-text fst-italic">
+            Reviewed On:
+            <span class="fw-bold">{{
+              "31 Jan 2023" | date : "dd-MM-yyyy"
+            }}</span>
+          </div>
+        </div>
+        <div class="card-body">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
+          quod, voluptatum, quia, voluptas quas voluptates quibusdam
+          voluptatibus quae quidem quos nesciunt. Quisquam, quae. Quisquam quod,
+          voluptatum, quia, voluptas quas voluptates quibusdam voluptatibus quae
+          quidem quos nesciunt. Quisquam, quae.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

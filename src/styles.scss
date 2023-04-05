@@ -1,1 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+.my-shadow {
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+.my-rounded-corner {
+  border-radius: 1rem;
+}
+
+.my-view {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.my-container{
+  width: 1250px;
+  margin: 0 auto;
+
+}

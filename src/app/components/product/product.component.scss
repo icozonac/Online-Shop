@@ -1,0 +1,54 @@
+nz-card {
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+img {
+  height: 15rem;
+  object-fit: cover;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.btn-content {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-list {
+  height: 18rem;
+  width: 18rem;
+  object-fit: cover;
+}
+
+.img-cart{
+  height: 11rem;
+  width: 11rem;
+  object-fit: cover;
+}
+
+.img-prev-cart{
+  height: 10rem;
+  width: 11rem;
+  object-fit: cover;
+}
+
+.card {
+  border: none;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  height: 13rem;
+}
+
+
+

@@ -1,0 +1,103 @@
+<div *ngIf="view === 'grid'">
+  <div class="card text-center">
+    <nz-card nzHoverable style="width: 270px" [nzCover]="coverTemplate">
+      <nz-card-meta nzTitle="Title" nzDescription="description"></nz-card-meta>
+      <h5>Price</h5>
+      <button class="btn btn-outline-danger" type="button">
+        <div class="btn-content">
+          <span nz-icon nzType="shopping" nzTheme="outline"></span> Add to Cart
+        </div>
+      </button>
+    </nz-card>
+    <ng-template #coverTemplate>
+      <img
+        alt="photo"
+        src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
+      />
+    </ng-template>
+  </div>
+</div>
+
+<div *ngIf="view === 'list'">
+  <nz-card
+    nzHoverable
+    style="
+      width: 45rem;
+      display: flex;
+      align-items: center;
+      gap: 7rem;
+      flex-direction: row;
+    "
+    [nzCover]="coverTemplate"
+  >
+    <div class="card-content">
+      <h4>Title</h4>
+      <h6 class="text-muted">Description</h6>
+      <h6>x products are available</h6>
+      <h5>Price</h5>
+      <button class="btn btn-outline-danger" type="button">
+        <div class="btn-content">
+          <span nz-icon nzType="shopping" nzTheme="outline"></span> Add to Cart
+        </div>
+      </button>
+    </div>
+  </nz-card>
+  <ng-template #coverTemplate>
+    <img
+      class="img-list"
+      alt="photo"
+      src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
+    />
+  </ng-template>
+</div>
+
+<div *ngIf="view === 'cartItem'">
+  <nz-card
+    nzHoverable
+    style="
+      width: 27rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-direction: row;
+    "
+    [nzCover]="coverTemplate"
+  >
+    <div
+      class="card-content-cart d-flex justify-content-between align-items-start flex-column"
+    >
+      <h6>Title</h6>
+      <h5 class="text-success">Price</h5>
+      <button class="btn btn-outline-danger" type="button">
+        <div class="btn-content">
+          <span nz-icon nzType="shopping" nzTheme="outline"></span> Remove From
+          Cart
+        </div>
+      </button>
+    </div>
+  </nz-card>
+  <ng-template #coverTemplate>
+    <img
+      class="img-cart"
+      alt="photo"
+      src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
+    />
+  </ng-template>
+</div>
+
+<div *ngIf="view === 'prevCartItem'">
+  <div class="card text-centermy-rounded-corner my-shadow">
+    <div
+      class="overflow-hidden d-flex justify-content-center align-items-center my-shadow"
+    >
+      <img
+        class="img-prev-cart"
+        alt="photo"
+        src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
+      />
+    </div>
+    <div class="card-body p-2">
+      <h5 class="title-card title mb-1">Title</h5>
+    </div>
+  </div>
+</div>

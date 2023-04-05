@@ -1,0 +1,15 @@
+img {
+  height: 25rem;
+  object-fit: cover;
+}
+
+.product-baner button {
+  position: absolute;
+  margin-top: 15rem;
+  margin-left: 15rem;
+
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    transform: scale(1.1);
+  }
+}

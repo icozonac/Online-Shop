@@ -1,0 +1,67 @@
+<div class="my-shadow my-rounded-corner overflow-hidden mb-5">
+  <div class="border p-3 d-flex justify-content-around">
+    <div class="btn-group" role="group">
+      <button
+        type="button"
+        class="btn btn-outline-secondary"
+        [ngClass]="{ active: view === 'grid' }"
+        (click)="view = 'grid'"
+      >
+        Grid
+      </button>
+      <button
+        type="button"
+        class="btn btn-outline-secondary"
+        [ngClass]="{ active: view === 'list' }"
+        (click)="view = 'list'"
+      >
+        List
+      </button>
+    </div>
+
+    <div class="d-flex align-items-center">
+      <span class="ms-5 me-3 w-10 fs-5 fw-bold">Sort by</span>
+      <div class="btn-group" role="group">
+        <button
+          type="button"
+          class="btn btn-outline-secondary"
+          [ngClass]="{ active: sortby === 'default' }"
+          (click)="sortby = 'default'"
+        >
+          Default
+        </button>
+        <button
+          type="button"
+          class="btn btn-outline-secondary"
+          [ngClass]="{ active: sortby === 'htl' }"
+          (click)="sortby = 'htl'"
+        >
+          Price (High to Low)
+        </button>
+        <button
+          type="button"
+          class="btn btn-outline-secondary"
+          [ngClass]="{ active: sortby === 'lth' }"
+          (click)="sortby = 'lth'"
+        >
+          Price (Low to High)
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="border pt-5 pb-5">
+    <div class="my-view" *ngIf="view === 'grid'">
+      <app-product
+        [view]="view"
+        *ngFor="let product of [1, 1, 1, 1, 1]"
+      ></app-product>
+    </div>
+    <div class="my-view" *ngIf="view === 'list'">
+      <app-product
+        [view]="view"
+        *ngFor="let product of [1, 1, 1, 1, 1]"
+      ></app-product>
+    </div>
+  </div>
+</div>
