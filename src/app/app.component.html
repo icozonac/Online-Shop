@@ -1,7 +1,7 @@
 <nz-layout>
   <nz-header class="d-flex justify-content-between align-items-center">
     <span
-      class="logo text-light fs-4 fw-bold d-flex align-items-center"
+      class="logo text-light fs-4 fw-bold d-flex align-items-center gap-1"
       routerLink="/home"
     >
       <span nz-icon nzType="shop" nzTheme="outline"></span> My Shop</span
@@ -11,7 +11,7 @@
       <div class="btn-group me-3" role="group">
         <button
           type="button"
-          class="btn btn-outline-light d-flex align-items-center"
+          class="btn btn-outline-light d-flex align-items-center gap-1"
           routerLink="/home"
         >
           <span nz-icon nzType="home" nzTheme="outline"></span> Home
@@ -22,8 +22,7 @@
             nzTrigger="click"
             [nzDropdownMenu]="menu"
             type="button"
-            class="btn btn-outline-light d-flex align-items-center"
-            routerLink="/products"
+            class="btn btn-outline-light d-flex align-items-center gap-1"
           >
             Products <span nz-icon nzType="down"></span>
           </button>
@@ -38,6 +37,12 @@
                   nz-menu-item
                   *ngFor="let subcategory of item.subcategories"
                   [style.cursor]="'pointer'"
+                  OpenProducts
+                  [category]="{
+                    id: 0,
+                    category: item.category,
+                    subcategory: subcategory
+                  }"
                 >
                   <a class="dropdown-item">
                     {{ subcategory | titlecase }}
@@ -53,35 +58,33 @@
         </div>
       </div>
       <div class="btn-group" role="group">
-        <button
-          type="button"
-          class="btn btn-outline-light d-flex align-items-center"
-        >
-          <span nz-icon nzType="login" nzTheme="outline"></span> Login
+        <button type="button" class="btn btn-outline-light p-0">
+          <app-login ></app-login>
         </button>
+
         <button
           type="button"
-          class="btn btn-outline-light d-flex align-items-center"
+          class="btn btn-outline-light d-flex align-items-center gap-1"
         >
           <span nz-icon nzType="user" nzTheme="outline"></span> Account
         </button>
         <button
           type="button"
-          class="btn btn-outline-light d-flex align-items-center"
+          class="btn btn-outline-light d-flex align-items-center gap-1"
           routerLink="/cart"
         >
           <span nz-icon nzType="shopping-cart" nzTheme="outline"></span> Cart
         </button>
         <button
           type="button"
-          class="btn btn-outline-light d-flex align-items-center"
+          class="btn btn-outline-light d-flex align-items-center gap-1"
           routerLink="/orders"
         >
           <span nz-icon nzType="shopping" nzTheme="outline"></span> Orders
         </button>
         <button
           type="button"
-          class="btn btn-outline-light d-flex align-items-center"
+          class="btn btn-outline-light d-flex align-items-center gap-1"
         >
           <span nz-icon nzType="logout" nzTheme="outline"></span> Logout
         </button>
@@ -90,11 +93,14 @@
   </nz-header>
   <nz-content>
     <router-outlet></router-outlet>
-    <!-- <app-order></app-order> -->
-    <!-- <app-cart></app-cart> -->
-    <!-- <app-product-details></app-product-details> -->
-    <!-- <app-products></app-products> -->
-    <!-- <app-home></app-home> -->
+
+    <nz-back-top [nzTemplate]="tpl" [nzVisibilityHeight]="100">
+      <ng-template #tpl>
+        <div class="ant-back-top-inner">
+          <span nz-icon nzType="arrow-up" nzTheme="outline"></span>
+        </div>
+      </ng-template>
+    </nz-back-top>
   </nz-content>
   <nz-footer>Made by Cozonac</nz-footer>
 </nz-layout>

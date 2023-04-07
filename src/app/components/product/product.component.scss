@@ -4,11 +4,11 @@ nz-card {
 }
 
 img {
-  height: 15rem;
+  height: 18rem;
   object-fit: cover;
   transition: all 0.3s ease-in-out;
   &:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
   }
 }
 
@@ -25,16 +25,17 @@ img {
   object-fit: cover;
 }
 
-.img-cart{
+.img-cart {
   height: 11rem;
   width: 11rem;
   object-fit: cover;
 }
 
-.img-prev-cart{
-  height: 10rem;
-  width: 11rem;
+.img-prev-cart {
+  height: 11rem;
+  width: 100%;
   object-fit: cover;
+  cursor: pointer;
 }
 
 .card {
@@ -49,6 +50,3 @@ img {
   gap: 5px;
   height: 13rem;
 }
-
-
-

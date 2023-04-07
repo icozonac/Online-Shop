@@ -19,6 +19,11 @@ import { ProductsComponent } from './components/products/products.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { CartComponent } from './components/cart/cart.component';
 import { OrderComponent } from './components/order/order.component';
+import { OpenProductsDirective } from './directives/open-products/open-products.directive';
+import { OpenDproductsDetailsDirective } from './directives/open-products-details/open-products-details.directive';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { LoginComponent } from './components/auth/login/login.component';
+import { RegisterComponent } from './components/auth/register/register.component';
 
 registerLocaleData(en);
 
@@ -32,6 +37,11 @@ registerLocaleData(en);
     ProductDetailsComponent,
     CartComponent,
     OrderComponent,
+    OpenProductsDirective,
+    OpenDproductsDetailsDirective,
+    PageNotFoundComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,

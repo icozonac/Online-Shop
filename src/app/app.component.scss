@@ -2,21 +2,31 @@
   text-align: center;
 }
 
+:host ::ng-deep .ant-back-top {
+  bottom: 100px;
+}
+
+:host ::ng-deep .ant-back-top-inner {
+  height: 50px;
+  width: 50px;
+  line-height: 40px;
+  border-radius: 50%;
+  background-color: #1a202c;
+  color: #fff;
+  text-align: center;
+  font-size: 20px;
+}
+
 nz-header {
   background: #1a202c;
   color: #fff;
+  height: 70px;
 }
 
 nz-footer {
   line-height: 1.5;
   background: #ff9800;
   color: #fff;
-}
-
-nz-sider {
-  background: #3ba0e9;
-  color: #fff;
-  line-height: 120px;
 }
 
 nz-content {
@@ -40,9 +50,5 @@ nz-layout:last-child {
 nz-header {
   .logo {
     cursor: pointer;
-    gap: 5px;
-  }
-  button {
-    gap: 5px;
   }
 }

@@ -7,7 +7,7 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./order.component.scss'],
 })
 export class OrderComponent implements OnInit {
-  selectedPaymentMethodName: string = 'a';
+  selectedPaymentMethodName: string = '';
   selectedPaymentMethod = new FormControl('0');
 
   constructor() {}

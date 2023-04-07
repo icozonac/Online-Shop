@@ -2,11 +2,13 @@ img {
   height: 25rem;
   object-fit: cover;
 }
-
+.product-baner{
+  position: relative;
+}
 .product-baner button {
   position: absolute;
-  margin-top: 15rem;
-  margin-left: 15rem;
+  top: 60%;
+  left: 20%;
 
   transition: all 0.3s ease-in-out;
   &:hover {
