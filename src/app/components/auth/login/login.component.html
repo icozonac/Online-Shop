@@ -1,4 +1,7 @@
-<div class="button d-flex align-items-center gap-1 px-3 py-2" (click)="showModal()">
+<div
+  class="button d-flex align-items-center gap-1 px-3 py-2"
+  (click)="showModal()"
+>
   <span nz-icon nzTheme="outline" nzType="login"></span> Login
 </div>
 
@@ -10,18 +13,18 @@
   <div *nzModalContent>
     <form
       nz-form
-      [formGroup]="validateForm"
+      [formGroup]="loginForm"
       class="login-form"
-      (ngSubmit)="submitForm()"
+      (ngSubmit)="submitLogin()"
     >
       <nz-form-item>
-        <nz-form-control nzErrorTip="Please input your username!">
+        <nz-form-control nzErrorTip="Please input valid email!">
           <nz-input-group nzPrefixIcon="user">
             <input
               type="text"
               nz-input
-              formControlName="userName"
-              placeholder="Username"
+              formControlName="userEmail"
+              placeholder="Email"
             />
           </nz-input-group>
         </nz-form-control>
@@ -49,7 +52,9 @@
         </div>
       </div>
       Or
-      <app-register (click)="handleCancel()" ></app-register>
+      <a style="color: #1890ff" routerLink="/register" (click)="handleCancel()"
+        >register now!</a
+      >
     </form>
   </div>
   <div *nzModalFooter>
@@ -57,10 +62,11 @@
     <button
       nz-button
       nzType="primary"
-      (click)="submitForm()"
+      (click)="submitLogin()"
       [nzLoading]="isConfirmLoading"
     >
       Log in
     </button>
   </div>
 </nz-modal>
+

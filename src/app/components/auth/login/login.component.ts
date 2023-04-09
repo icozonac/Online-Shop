@@ -13,13 +13,13 @@ import {
 export class LoginComponent implements OnInit {
   isVisible = false;
   isConfirmLoading = false;
-  validateForm!: UntypedFormGroup;
+  loginForm!: UntypedFormGroup;
 
   constructor(private fb: UntypedFormBuilder) {}
 
   ngOnInit(): void {
-    this.validateForm = this.fb.group({
-      userName: [null, [Validators.required] ],
+    this.loginForm = this.fb.group({
+      userEmail: [null, [Validators.required, Validators.email]],
       password: [null, [Validators.required]],
       remember: [true],
     });
@@ -28,21 +28,21 @@ export class LoginComponent implements OnInit {
   showModal(): void {
     this.isVisible = true;
   }
-  
+
   handleCancel(): void {
     this.isVisible = false;
   }
 
-  submitForm(): void {
-    if (this.validateForm.valid) {
+  submitLogin(): void {
+    if (this.loginForm.valid) {
       this.isConfirmLoading = true;
-      console.log('submit', this.validateForm.value);
+      console.log('submit', this.loginForm.value);
       setTimeout(() => {
         this.isVisible = false;
         this.isConfirmLoading = false;
       }, 3000);
     } else {
-      Object.values(this.validateForm.controls).forEach((control) => {
+      Object.values(this.loginForm.controls).forEach((control) => {
         if (control.invalid) {
           control.markAsDirty();
           control.updateValueAndValidity({ onlySelf: true });

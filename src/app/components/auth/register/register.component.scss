@@ -1,0 +1,31 @@
+form {
+  width: 500px;
+  animation: slideDown 1s forwards ease-in-out;
+  backdrop-filter: saturate(100%) blur(10px);
+  color: black;
+  font-size: large;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+}
+
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(20px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+.title {
+  background-color: #1a202c;
+}
+
+.submit-btn {
+  background-color: #ff9800;
+  font-weight: bold;
+}
