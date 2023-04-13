@@ -1,8 +1,23 @@
 <div *ngIf="view === 'grid'">
   <div class="card text-center">
     <nz-card nzHoverable style="width: 270px" [nzCover]="coverTemplate">
-      <nz-card-meta nzTitle="Title" nzDescription="description"></nz-card-meta>
-      <h5>Price</h5>
+      <nz-card-meta
+        nzTitle="{{ product.title }}"
+        nzDescription="{{ product.description }}"
+      ></nz-card-meta>
+      <div class="d-flex justify-content-center mt-4">
+        <h5 class="text-success ">
+          {{
+            utilityService.applyDiscount(product.price, product.offer.discount)
+              | currency : "USD" : "symbol" : "1.2-2"
+          }}
+        </h5>
+        <span class="text-danger mt-1 mx-1"> -{{ product.offer.discount }}%</span>
+      </div>
+      <h6 class="text-muted text-decoration-line-through">
+        {{ product.price | currency : "USD" : "symbol" : "1.0-0" }}
+      </h6>
+
       <button class="btn btn-outline-danger" type="button">
         <div class="btn-content">
           <span nz-icon nzType="shopping" nzTheme="outline"></span> Add to Cart
@@ -13,7 +28,8 @@
       <img
         alt="photo"
         src="https://specifications-pro.com/wp-content/uploads/2021/08/iPhone-13-2.jpg"
-        OpenDproductsDetails [productId]="1"
+        OpenDproductsDetails
+        [productId]="product.id"
       />
     </ng-template>
   </div>
@@ -48,7 +64,8 @@
       class="img-list"
       alt="photo"
       src="https://specifications-pro.com/wp-content/uploads/2021/08/iPhone-13-2.jpg"
-      OpenDproductsDetails [productId]="1"
+      OpenDproductsDetails
+      [productId]="1"
     />
   </ng-template>
 </div>
@@ -83,7 +100,8 @@
       class="img-cart"
       alt="photo"
       src="https://specifications-pro.com/wp-content/uploads/2021/08/iPhone-13-2.jpg"
-      OpenDproductsDetails [productId]="1"
+      OpenDproductsDetails
+      [productId]="1"
     />
   </ng-template>
 </div>
@@ -97,10 +115,11 @@
         class="img-prev-cart"
         alt="photo"
         src="https://specifications-pro.com/wp-content/uploads/2021/08/iPhone-13-2.jpg"
-        OpenDproductsDetails [productId]="1"
+        OpenDproductsDetails
+        [productId]="1"
       />
     </div>
-    <div class="card-body ">
+    <div class="card-body">
       <h5 class="title-card title mb-1">Title</h5>
     </div>
   </div>
