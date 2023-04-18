@@ -6,13 +6,15 @@
         nzDescription="{{ product.description }}"
       ></nz-card-meta>
       <div class="d-flex justify-content-center mt-4">
-        <h5 class="text-success ">
+        <h5 class="text-success">
           {{
             utilityService.applyDiscount(product.price, product.offer.discount)
               | currency : "USD" : "symbol" : "1.2-2"
           }}
         </h5>
-        <span class="text-danger mt-1 mx-1"> -{{ product.offer.discount }}%</span>
+        <span class="text-danger mt-1 mx-1">
+          -{{ product.offer.discount }}%</span
+        >
       </div>
       <h6 class="text-muted text-decoration-line-through">
         {{ product.price | currency : "USD" : "symbol" : "1.0-0" }}
@@ -27,7 +29,9 @@
     <ng-template #coverTemplate>
       <img
         alt="photo"
-        src="https://specifications-pro.com/wp-content/uploads/2021/08/iPhone-13-2.jpg"
+        src="../../assets/images/{{ product.productCategory.subCategory }}/{{
+          product.id
+        }}/1.jpg"
         OpenDproductsDetails
         [productId]="product.id"
       />
@@ -42,16 +46,29 @@
       width: 45rem;
       display: flex;
       align-items: center;
-      gap: 7rem;
+      gap: 1rem;
       flex-direction: row;
     "
     [nzCover]="coverTemplate"
   >
     <div class="card-content">
-      <h4>Title</h4>
-      <h6 class="text-muted">Description</h6>
-      <h6>x products are available</h6>
-      <h5>Price</h5>
+      <h4 class="title">{{ product.title }}</h4>
+      <h6 class="description text-muted">{{ product.description }}</h6>
+
+      <div class="d-flex justify-content-center">
+        <h5 class="text-success">
+          {{
+            utilityService.applyDiscount(product.price, product.offer.discount)
+              | currency : "USD" : "symbol" : "1.2-2"
+          }}
+        </h5>
+        <span class="text-danger mt-1 mx-1">
+          -{{ product.offer.discount }}%</span
+        >
+      </div>
+      <h6 class="text-muted text-decoration-line-through">
+        {{ product.price | currency : "USD" : "symbol" : "1.0-0" }}
+      </h6>
       <button class="btn btn-outline-danger" type="button">
         <div class="btn-content">
           <span nz-icon nzType="shopping" nzTheme="outline"></span> Add to Cart
@@ -63,7 +80,9 @@
     <img
       class="img-list"
       alt="photo"
-      src="https://specifications-pro.com/wp-content/uploads/2021/08/iPhone-13-2.jpg"
+      src="../../assets/images/{{ product.productCategory.subCategory }}/{{
+        product.id
+      }}/1.jpg"
       OpenDproductsDetails
       [productId]="1"
     />

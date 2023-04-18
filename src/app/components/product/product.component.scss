@@ -5,7 +5,7 @@ nz-card {
 
 img {
   height: 18rem;
-  object-fit: cover;
+  object-fit: contain;
   transition: all 0.3s ease-in-out;
   &:hover {
     transform: scale(1.05);
@@ -22,7 +22,6 @@ img {
 .img-list {
   height: 18rem;
   width: 18rem;
-  object-fit: cover;
 }
 
 .img-cart {
@@ -55,5 +54,17 @@ nz-card-meta {
   height: 75px;
   overflow: hidden;
   text-overflow: ellipsis;
+}
 
+
+.title{
+  height: 45px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.description{
+  height: 60px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

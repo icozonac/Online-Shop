@@ -20,7 +20,7 @@ export class NavigationService {
           let mappedCategory: Category = {
             id: category.id,
             category: category.category,
-            subcategory: category.subCategory,
+            subCategory: category.subCategory,
           };
           return mappedCategory;
         })
@@ -28,11 +28,11 @@ export class NavigationService {
     );
   }
   
-  getProducts(category: string, subcategory: string, count: number) {
+  getProducts(category: string, subCategory: string, count: number) {
     return this.http.get<Product[]>(this.baseUrl + 'GetProducts',{
       params: new HttpParams()
         .set('category', category)
-        .set('subcategory', subcategory)
+        .set('subCategory', subCategory)
         .set('count', count)
     });
   }

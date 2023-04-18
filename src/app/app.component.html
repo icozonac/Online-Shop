@@ -35,17 +35,17 @@
                 </li>
                 <li
                   nz-menu-item
-                  *ngFor="let subcategory of item.subcategories"
+                  *ngFor="let subCategory of item.subCategories"
                   [style.cursor]="'pointer'"
                   OpenProducts
                   [category]="{
                     id: 0,
                     category: item.category,
-                    subcategory: subcategory
+                    subCategory: subCategory
                   }"
                 >
                   <a class="dropdown-item">
-                    {{ subcategory | titlecase }}
+                    {{ subCategory | titlecase }}
                   </a>
                 </li>
                 <li

@@ -13,7 +13,7 @@ export class SuggestedProductsComponent implements OnInit {
   @Input() catergory: Category = {
     id: 0,
     category: '',
-    subcategory: '',
+    subCategory: '',
   };
 
   constructor(private navigationService: NavigationService) {}
@@ -22,7 +22,7 @@ export class SuggestedProductsComponent implements OnInit {
     this.navigationService
       .getProducts(
         this.catergory.category,
-        this.catergory.subcategory,
+        this.catergory.subCategory,
         this.count
       )
       .subscribe((res: any[]) => {

@@ -24,6 +24,7 @@ import { OpenDproductsDetailsDirective } from './directives/open-products-detail
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { RegisterComponent } from './components/auth/register/register.component';
+import { RouterModule } from '@angular/router';
 
 registerLocaleData(en);
 
@@ -51,6 +52,7 @@ registerLocaleData(en);
     BrowserAnimationsModule,
     CommonsModule,
     ReactiveFormsModule,
+    RouterModule
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent],

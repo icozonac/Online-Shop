@@ -1,6 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/category';
 import { UtilityService } from 'src/app/services/utility.service';
+
 
 @Component({
   selector: 'app-product',
@@ -18,7 +19,7 @@ export class AppProductComponent implements OnInit {
     productCategory: {
       id: 1,
       category: '',
-      subcategory: '',
+      subCategory: '',
     },
     offer: {
       id: 1,
@@ -28,9 +29,7 @@ export class AppProductComponent implements OnInit {
     imageName: '',
   };
 
-  constructor(public utilityService: UtilityService ) {}
+  constructor(public utilityService: UtilityService) {}
 
-  ngOnInit(): void {
-    
-  }
+  ngOnInit(): void {}
 }

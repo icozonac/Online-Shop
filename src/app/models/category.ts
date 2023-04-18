@@ -1,7 +1,7 @@
 export interface Category {
   id: number;
   category: string;
-  subcategory: string;
+  subCategory: string;
 }
 
 export interface SuggestedProduct {
@@ -11,7 +11,7 @@ export interface SuggestedProduct {
 
 export interface NavigationItem {
   category: string;
-  subcategories: string[];
+  subCategories: string[];
 }
 
 export interface CategoryResponse {

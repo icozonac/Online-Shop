@@ -20,14 +20,14 @@ export class AppComponent implements OnInit {
         let present = false;
         for (let navItem of this.navigationList) {
           if (navItem.category === item.category) {
-            navItem.subcategories.push(item.subcategory);
+            navItem.subCategories.push(item.subCategory);
             present = true;
           }
         }
         if (!present) {
           this.navigationList.push({
             category: item.category,
-            subcategories: [item.subcategory],
+            subCategories: [item.subCategory],
           });
         }
       }
