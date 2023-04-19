@@ -12,8 +12,8 @@ export class NavigationService {
   constructor(private http: HttpClient) {}
 
   getCategoryList() {
-   let url = this.baseUrl + 'GetProductCategories';
-  
+    let url = this.baseUrl + 'GetProductCategories';
+
     return this.http.get<CategoryResponse[]>(url).pipe(
       map((categories) =>
         categories.map((category) => {
@@ -27,13 +27,18 @@ export class NavigationService {
       )
     );
   }
-  
+
   getProducts(category: string, subCategory: string, count: number) {
-    return this.http.get<Product[]>(this.baseUrl + 'GetProducts',{
+    return this.http.get<Product[]>(this.baseUrl + 'GetProducts', {
       params: new HttpParams()
         .set('category', category)
         .set('subCategory', subCategory)
-        .set('count', count)
+        .set('count', count),
     });
+  }
+
+  getProduct(id: number) {
+    let url = this.baseUrl + 'GetProduct/' + id;
+    return this.http.get(url);
   }
 }
