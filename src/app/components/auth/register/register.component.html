@@ -116,29 +116,18 @@
       </div>
     </div>
     <div class="col mb-3 ps-3">
-      <div class="m-1">Gender</div>
-      <div class="form-check form-check-inline">
-        <input
-          type="radio"
-          class="form-check-input"
-          value="m"
-          id="male"
-          formControlName="gender"
-        />
-        <label class="form-check-label" for="male">Male</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input
-          type="radio"
-          class="form-check-input"
-          value="f"
-          id="female"
-          formControlName="gender"
-        />
-        <label class="form-check-label" for="female">Female</label>
-      </div>
-      <div class="form-text text-danger" *ngIf="Gender.errors?.['required']">
-        Select Gender
+      <label for="address" class="form-label">Address</label>
+      <input
+        type="text"
+        class="form-control"
+        id="address"
+        formControlName="address"
+      />
+      <div
+        class="form-text text-danger"
+        *ngIf="Address.errors?.['required'] && (Address.touched || Address.dirty)"
+      >
+        Address is required.
       </div>
     </div>
   </div>
@@ -190,11 +179,15 @@
         <button
           type="submit"
           class="submit-btn btn btn-outline-light py-2"
-          disabled="registerForm.invalid"
         >
           Register
         </button>
       </div>
     </div>
+  </div>
+  <div>
+    <p class="text-center mt-3 text-danger">
+      {{ message }}
+    </p>
   </div>
 </form>

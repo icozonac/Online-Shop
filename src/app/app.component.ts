@@ -1,3 +1,4 @@
+import { UtilityService } from 'src/app/services/utility.service';
 import { NavigationService } from './services/navigation.service';
 import { Category, NavigationItem } from './models/category';
 import { Component, OnInit } from '@angular/core';
@@ -12,7 +13,10 @@ export class AppComponent implements OnInit {
 
   navigationList: NavigationItem[] = [];
 
-  constructor(private navigationService: NavigationService) {}
+  constructor(
+    private navigationService: NavigationService,
+    public utilityService: UtilityService
+  ) {}
 
   ngOnInit(): void {
     this.navigationService.getCategoryList().subscribe((list: Category[]) => {

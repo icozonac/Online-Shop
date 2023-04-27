@@ -63,10 +63,13 @@
       nz-button
       nzType="primary"
       (click)="submitLogin()"
-      [nzLoading]="isConfirmLoading"
     >
       Log in
     </button>
+    <div class="text-center">
+      <h6 class="text-danger">
+        {{ message }}
+      </h6>
+    </div>
   </div>
 </nz-modal>
-

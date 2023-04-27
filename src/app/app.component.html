@@ -58,13 +58,18 @@
         </div>
       </div>
       <div class="btn-group" role="group">
-        <button type="button" class="btn btn-outline-light p-0">
-          <app-login ></app-login>
+        <button
+          type="button"
+          class="btn btn-outline-light p-0"
+          *ngIf="!utilityService.isLoggedIn()"
+        >
+          <app-login></app-login>
         </button>
 
         <button
           type="button"
           class="btn btn-outline-light d-flex align-items-center gap-1"
+          *ngIf="utilityService.isLoggedIn()"
         >
           <span nz-icon nzType="user" nzTheme="outline"></span> Account
         </button>
@@ -72,6 +77,7 @@
           type="button"
           class="btn btn-outline-light d-flex align-items-center gap-1"
           routerLink="/cart"
+          *ngIf="utilityService.isLoggedIn()"
         >
           <span nz-icon nzType="shopping-cart" nzTheme="outline"></span> Cart
         </button>
@@ -79,12 +85,15 @@
           type="button"
           class="btn btn-outline-light d-flex align-items-center gap-1"
           routerLink="/orders"
+          *ngIf="utilityService.isLoggedIn()"
         >
           <span nz-icon nzType="shopping" nzTheme="outline"></span> Orders
         </button>
         <button
           type="button"
           class="btn btn-outline-light d-flex align-items-center gap-1"
+          (click)="utilityService.logoutUser()"
+          *ngIf="utilityService.isLoggedIn()"
         >
           <span nz-icon nzType="logout" nzTheme="outline"></span> Logout
         </button>

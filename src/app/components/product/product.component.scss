@@ -27,13 +27,11 @@ img {
 .img-cart {
   height: 11rem;
   width: 11rem;
-  object-fit: cover;
 }
 
 .img-prev-cart {
   height: 11rem;
   width: 100%;
-  object-fit: cover;
   cursor: pointer;
 }
 
@@ -56,14 +54,13 @@ nz-card-meta {
   text-overflow: ellipsis;
 }
 
-
-.title{
+.title {
   height: 45px;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.description{
+.description {
   height: 60px;
   overflow: hidden;
   text-overflow: ellipsis;

@@ -145,7 +145,9 @@
         </button>
       </div>
       <div class="answers">
-        <h6 class="text-danger">Login first, then enter the review.</h6>
+        <h6 class="text-danger" *ngIf="!utilityService.isLoggedIn()">
+          Login first, then enter the review.
+        </h6>
         <h6 class="text-danger" *ngIf="showErrorMessage">
           Review Cannot Be Empty!
         </h6>
@@ -156,25 +158,21 @@
     </div>
     <div class="col p-3">
       <h3>Other Reviews</h3>
-      <h6 *ngIf="1">No Reviews Yet!</h6>
-      <div class="card mt-3" *ngFor="let review of [1, 2, 3]">
+      <h6 *ngIf="Reviews.length === 0">No Reviews Yet!</h6>
+      <div class="card mt-3" *ngFor="let review of Reviews">
         <div class="card-header d-flex justify-content-between">
           <div class="card-text">
-            <h6>Johny Vadagrei</h6>
+            <h6>{{ review.user.firstName }} {{ review.user.lastName }}</h6>
           </div>
           <div class="card-text fst-italic">
             Reviewed On:
             <span class="fw-bold">{{
-              "31 Jan 2023" | date : "dd-MM-yyyy"
+              review.createdAt 
             }}</span>
           </div>
         </div>
         <div class="card-body">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-          quod, voluptatum, quia, voluptas quas voluptates quibusdam
-          voluptatibus quae quidem quos nesciunt. Quisquam, quae. Quisquam quod,
-          voluptatum, quia, voluptas quas voluptates quibusdam voluptatibus quae
-          quidem quos nesciunt. Quisquam, quae.
+          {{ review.value }}
         </div>
       </div>
     </div>

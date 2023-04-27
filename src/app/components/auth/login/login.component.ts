@@ -1,9 +1,12 @@
+import { UtilityService } from 'src/app/services/utility.service';
 import { Component, OnInit } from '@angular/core';
 import {
+  FormControl,
   UntypedFormBuilder,
   UntypedFormGroup,
   Validators,
 } from '@angular/forms';
+import { NavigationService } from 'src/app/services/navigation.service';
 
 @Component({
   selector: 'app-login',
@@ -12,10 +15,14 @@ import {
 })
 export class LoginComponent implements OnInit {
   isVisible = false;
-  isConfirmLoading = false;
   loginForm!: UntypedFormGroup;
+  message: string = '';
 
-  constructor(private fb: UntypedFormBuilder) {}
+  constructor(
+    private fb: UntypedFormBuilder,
+    private navigationService: NavigationService,
+    private utilityService: UtilityService
+  ) {}
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
@@ -35,12 +42,16 @@ export class LoginComponent implements OnInit {
 
   submitLogin(): void {
     if (this.loginForm.valid) {
-      this.isConfirmLoading = true;
-      console.log('submit', this.loginForm.value);
-      setTimeout(() => {
-        this.isVisible = false;
-        this.isConfirmLoading = false;
-      }, 3000);
+      this.navigationService
+        .loginUser(this.Email.value, this.Password.value)
+        .subscribe((res: any) => {
+          if (res.toString() !== 'invalid') {
+            this.utilityService.setUser(res.toString());
+            this.isVisible = false;
+          } else {
+            this.message = 'Invalid Credentials';
+          }
+        });
     } else {
       Object.values(this.loginForm.controls).forEach((control) => {
         if (control.invalid) {
@@ -49,5 +60,12 @@ export class LoginComponent implements OnInit {
         }
       });
     }
+  }
+
+  get Email() {
+    return this.loginForm.get('userEmail') as FormControl;
+  }
+  get Password() {
+    return this.loginForm.get('password') as FormControl;
   }
 }

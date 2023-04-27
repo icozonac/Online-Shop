@@ -1,3 +1,4 @@
+import { User } from './../../../models/category';
 // import { AuthService } from './../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import {
@@ -6,6 +7,7 @@ import {
   Validators,
   FormBuilder,
 } from '@angular/forms';
+import { NavigationService } from 'src/app/services/navigation.service';
 
 @Component({
   selector: 'app-register',
@@ -15,7 +17,12 @@ import {
 export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
   invalidConfirmPass: boolean = false;
-  constructor(private fb: FormBuilder) {}
+  message: string = '';
+
+  constructor(
+    private fb: FormBuilder,
+    private navigationService: NavigationService
+  ) {}
 
   ngOnInit(): void {
     this.registerForm = this.fb.group({
@@ -45,7 +52,7 @@ export class RegisterComponent implements OnInit {
           Validators.maxLength(10),
         ],
       ],
-      gender: [, [Validators.required]],
+      address: ['', [Validators.required]],
       password: [
         '',
         [
@@ -58,21 +65,31 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  register(){
-    
+  register() {
+    if (this.registerForm.valid) {
+      let user: User = {
+        id: 0,
+        firstName: this.firstName.value,
+        lastName: this.lastName.value,
+        email: this.Email.value,
+        address: this.Address.value,
+        mobile: this.Mobile.value,
+        password: this.Password.value,
+        createdDate: '',
+        updatedDate: '',
+      };
+      this.navigationService.registerUser(user).subscribe((res: any) => {
+        this.message = res.toString();
+      });
+    } else {
+      Object.values(this.registerForm.controls).forEach((control) => {
+        if (control.invalid) {
+          control.markAsDirty();
+          control.updateValueAndValidity({ onlySelf: true });
+        }
+      });
+    }
   }
-
-  // registerSubmited() {
-  //   if (this.Password.value == this.confirmPassword.value) {
-  //     console.log('Submitted');
-  //     this.confirmPass = 'none';
-  //     this.authSerivice.registerUser().subscribe((res) => {
-  //       console.log(res);
-  //     });
-  //   } else {
-  //     this.confirmPass = 'inline';
-  //   }
-  // }
 
   get firstName(): FormControl {
     return this.registerForm.get('firstname') as FormControl;
@@ -86,8 +103,8 @@ export class RegisterComponent implements OnInit {
   get Mobile(): FormControl {
     return this.registerForm.get('mobile') as FormControl;
   }
-  get Gender(): FormControl {
-    return this.registerForm.get('gender') as FormControl;
+  get Address(): FormControl {
+    return this.registerForm.get('address') as FormControl;
   }
   get Password(): FormControl {
     return this.registerForm.get('password') as FormControl;

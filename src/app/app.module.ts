@@ -25,6 +25,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { LoginComponent } from './components/auth/login/login.component';
 import { RegisterComponent } from './components/auth/register/register.component';
 import { RouterModule } from '@angular/router';
+import { JwtModule } from '@auth0/angular-jwt';
 
 registerLocaleData(en);
 
@@ -52,7 +53,15 @@ registerLocaleData(en);
     BrowserAnimationsModule,
     CommonsModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: () => {
+          return localStorage.getItem('user');
+        },
+        allowedDomains: ['localhost:7206'],
+      },
+    }),
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent],
