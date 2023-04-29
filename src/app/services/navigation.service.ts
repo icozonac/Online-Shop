@@ -80,4 +80,14 @@ export class NavigationService {
     let url = this.baseUrl + 'GetProductReviews/' + productId;
     return this.http.get(url);
   }
+
+  addToCart(userId: number, productId: number) {
+    let url = this.baseUrl + 'InsertCartItem/' + userId + '/' + productId;
+    return this.http.post(url, null, { responseType: 'text' });
+  }
+
+  getActiveCartOfUser(userId: number) {
+    let url = this.baseUrl + 'GetActiveCartOfUser/' + userId;
+    return this.http.get(url);
+  }
 }

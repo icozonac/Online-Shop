@@ -80,6 +80,11 @@
           *ngIf="utilityService.isLoggedIn()"
         >
           <span nz-icon nzType="shopping-cart" nzTheme="outline"></span> Cart
+          <span
+            class="badge bg-warning text-dark"
+            *ngIf="cartItemsCount !== 0"
+            >{{ cartItemsCount }}</span
+          >
         </button>
         <button
           type="button"

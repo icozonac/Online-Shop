@@ -56,3 +56,44 @@ export interface Review {
   value: string;
   createdAt: string;
 }
+
+export interface CartItem {
+  id: number;
+  product: Product;
+}
+
+export interface Cart {
+  id: number;
+  user: User;
+  cartItems: CartItem[];
+  ordered: boolean;
+  orderedOn: string;
+}
+
+// Payment related interfaces
+export interface PaymentMethod {
+  id: number;
+  type: string;
+  provider: string;
+  available: boolean;
+  reason: string;
+}
+
+export interface Payment {
+  id: number;
+  user: User;
+  paymentMethod: PaymentMethod;
+  totalAmount: number;
+  shipingCharges: number;
+  amountReduced: number;
+  amountPaid: number;
+  createAt: string;
+}
+
+export interface Order {
+  id: number;
+  user: User;
+  cart: Cart;
+  payment: Payment;
+  crateAt: string;
+}

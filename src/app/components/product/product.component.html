@@ -20,9 +20,15 @@
         {{ product.price | currency : "USD" : "symbol" : "1.0-0" }}
       </h6>
 
-      <button class="btn btn-outline-danger" type="button">
+      <button
+        class="btn btn-outline-danger"
+        type="button"
+        [disabled]="!utilityService.isLoggedIn()"
+        (click)="this.utilityService.addToCart(product)"
+      >
         <div class="btn-content">
           <span nz-icon nzType="shopping" nzTheme="outline"></span> Add to Cart
+          <span *ngIf="!utilityService.isLoggedIn()">(Login First)</span>
         </div>
       </button>
     </nz-card>
@@ -69,9 +75,15 @@
       <h6 class="text-muted text-decoration-line-through">
         {{ product.price | currency : "USD" : "symbol" : "1.0-0" }}
       </h6>
-      <button class="btn btn-outline-danger" type="button">
+      <button
+        class="btn btn-outline-danger"
+        type="button"
+        [disabled]="!utilityService.isLoggedIn()"
+        (click)="this.utilityService.addToCart(product)"
+      >
         <div class="btn-content">
           <span nz-icon nzType="shopping" nzTheme="outline"></span> Add to Cart
+          <span *ngIf="!utilityService.isLoggedIn()">(Login First)</span>
         </div>
       </button>
     </div>
@@ -104,8 +116,13 @@
     <div
       class="card-content-cart d-flex justify-content-between align-items-start flex-column"
     >
-      <h6>Title</h6>
-      <h5 class="text-success">Price</h5>
+      <h6 class="text-start title">{{ product.title | titlecase }}</h6>
+      <h5 class="text-success">
+        {{
+          utilityService.applyDiscount(product.price, product.offer.discount)
+            | currency : "USD" : "symbol" : "1.2-2"
+        }}
+      </h5>
       <button class="btn btn-outline-danger" type="button">
         <div class="btn-content">
           <span nz-icon nzType="shopping" nzTheme="outline"></span> Remove From
@@ -118,7 +135,9 @@
     <img
       class="img-cart"
       alt="photo"
-      src="https://specifications-pro.com/wp-content/uploads/2021/08/iPhone-13-2.jpg"
+      src="../../assets/images/{{ product.productCategory.subCategory }}/{{
+        product.id
+      }}/1.jpg"
       OpenDproductsDetails
       [productId]="1"
     />

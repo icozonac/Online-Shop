@@ -53,7 +53,7 @@
 
     <div class="col-8">
       <div class="card">
-        <div class="card-header">
+        <div class="card-header text-start">
           <h2>{{ product.title | titlecase }}</h2>
         </div>
         <h6 class="text-primary my-3">
@@ -80,16 +80,19 @@
           <button
             class="btn btn-outline-danger d-flex justify-content-center align-items-center mb-5"
             type="button"
+            [disabled]="!utilityService.isLoggedIn()"
+            (click)="this.utilityService.addToCart(product)"
           >
             <div
               class="btn-content d-flex justify-content-center align-items-center gap-1"
             >
               <span nz-icon nzType="shopping" nzTheme="outline"></span> Add to
               Cart
+              <span *ngIf="!utilityService.isLoggedIn()">(Login First)</span>
             </div>
           </button>
         </div>
-        <div class="card-body">
+        <div class="card-body text-start">
           <h5 class="card-text">Description</h5>
           <ul class="list-group">
             <li
@@ -166,9 +169,7 @@
           </div>
           <div class="card-text fst-italic">
             Reviewed On:
-            <span class="fw-bold">{{
-              review.createdAt 
-            }}</span>
+            <span class="fw-bold">{{ review.createdAt }}</span>
           </div>
         </div>
         <div class="card-body">

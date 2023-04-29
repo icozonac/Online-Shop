@@ -10,6 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   title = 'shop';
+  cartItemsCount: number = 0;
 
   navigationList: NavigationItem[] = [];
 
@@ -35,6 +36,19 @@ export class AppComponent implements OnInit {
           });
         }
       }
+    });
+
+    //Cart Items Count
+    if (this.utilityService.isLoggedIn()) {
+      this.navigationService
+        .getActiveCartOfUser(this.utilityService.getUser().id)
+        .subscribe((res: any) => {
+          this.cartItemsCount = res.cartItems.length;
+        });
+    }
+
+    this.utilityService.changeCart.subscribe((res: any) => {
+      this.cartItemsCount += parseInt(res);
     });
   }
 }
