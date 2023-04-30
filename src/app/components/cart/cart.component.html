@@ -3,9 +3,14 @@
     <h3 class="w-25 border text-center py-2 my-rounded-corner">Current Cart</h3>
     <div class="mt-5">
       <div class="d-grid w-50 mx-auto mb-3">
-        <button class="btn btn-outline-success fs-4 mb-3" type="button">
+        <button
+          routerLink="/orders"
+          class="btnorder btn bg-success text-white mb-3"
+          [disabled]="usersCart.cartItems.length === 0"
+        >
           Order
         </button>
+
         <table class="table w-100 mx-auto table-bordered table-hover my-shadow">
           <tbody>
             <tr>
@@ -72,20 +77,32 @@
     <h3 class="w-25 border text-center py-2 mb-5 my-rounded-corner">
       Previous Cart
     </h3>
-    <div class="card mb-5" *ngFor="let cart of [1, 1, 1, 1, 1, 1]">
+    <div class="card mb-5" *ngFor="let cart of usersPreviousCarts">
       <div
         class="card-header d-flex fw-bold justify-content-between align-items-center"
       >
         <span class="time"
-          >Ordered On : <span class="fs-5">22 Jan 2022</span></span
+          >Ordered On : <span class="fs-5">{{ cart.orderedOn }}</span></span
         >
-        <span class="count"> Total Items : <span class="fs-5">5</span></span>
-        <span class="price">Price Paid: <span class="fs-5">10000</span></span>
+        <span class="count">
+          Total Items :
+          <span class="fs-5">{{ cart.cartItems.length }}</span></span
+        >
+        <span class="price"
+          >Price Paid:
+          <span class="fs-5">{{
+            utilityService.calculatePricePaid(cart)
+              | currency : "USD" : "symbol" : "1.2-2"
+          }}</span></span
+        >
       </div>
       <div class="cart-body px-4 py-2">
         <div class="row g-0">
-          <div class="col-2 px-2 py-2" *ngFor="let i of [1, 1, 1, 1, 1]">
-            <app-product [view]="'prevCartItem'"></app-product>
+          <div class="col-2 px-2 py-2" *ngFor="let cartItem of cart.cartItems">
+            <app-product
+              [view]="'prevCartItem'"
+              [product]="cartItem.product"
+            ></app-product>
           </div>
         </div>
       </div>

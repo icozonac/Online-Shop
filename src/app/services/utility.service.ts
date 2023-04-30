@@ -80,7 +80,18 @@ export class UtilityService {
       );
     }
 
-    if(payment.amountPaid > 2000) payment.shipingCharges = 0;
+    if (payment.amountPaid > 2000) payment.shipingCharges = 0;
     else payment.shipingCharges = 20;
+  }
+
+  calculatePricePaid(cart: Cart): number {
+    let pricePaid = 0;
+    for (let cartItem of cart.cartItems) {
+      pricePaid += this.applyDiscount(
+        cartItem.product.price,
+        cartItem.product.offer.discount
+      );
+    }
+    return pricePaid;
   }
 }

@@ -139,7 +139,7 @@
         product.id
       }}/1.jpg"
       OpenDproductsDetails
-      [productId]="1"
+      [productId]="product.id"
     />
   </ng-template>
 </div>
@@ -152,13 +152,15 @@
       <img
         class="img-prev-cart"
         alt="photo"
-        src="https://specifications-pro.com/wp-content/uploads/2021/08/iPhone-13-2.jpg"
+        src="../../assets/images/{{ product.productCategory.subCategory }}/{{
+          product.id
+        }}/1.jpg"
         OpenDproductsDetails
-        [productId]="1"
+        [productId] = "product.id"
       />
     </div>
     <div class="card-body">
-      <h5 class="title-card title mb-1">Title</h5>
+      <h5 class="title-card title mb-1 fs-6">{{product.title}}</h5>
     </div>
   </div>
 </div>

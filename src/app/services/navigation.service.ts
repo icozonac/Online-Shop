@@ -1,6 +1,9 @@
 import {
   Category,
   CategoryResponse,
+  Order,
+  Payment,
+  PaymentMethod,
   Product,
   User,
 } from './../models/category';
@@ -89,5 +92,24 @@ export class NavigationService {
   getActiveCartOfUser(userId: number) {
     let url = this.baseUrl + 'GetActiveCartOfUser/' + userId;
     return this.http.get(url);
+  }
+
+  getAllPreviousCarts(userId: number) {
+    let url = this.baseUrl + 'GetAllPreviousCartsOfUser/' + userId;
+    return this.http.get(url);
+  }
+
+  getPaymentMethods() {
+    let url = this.baseUrl + 'GetPaymentMethods';
+    return this.http.get<PaymentMethod[]>(url);
+  }
+
+  insertPayment(payment: Payment) {
+    let url = this.baseUrl + 'InsertPayment';
+    return this.http.post(url, payment, { responseType: 'text' });
+  }
+
+  insertOrder(order: Order) {
+    return this.http.post(this.baseUrl + 'InsertOrder', order);
   }
 }

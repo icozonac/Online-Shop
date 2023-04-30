@@ -18,6 +18,8 @@ export class CartComponent implements OnInit {
     orderedOn: '',
   };
 
+  usersPreviousCarts: Cart[] = [];
+
   usersPaymentInfo: Payment = {
     id: 0,
     user: this.utilityService.getUser(),
@@ -32,7 +34,7 @@ export class CartComponent implements OnInit {
     shipingCharges: 0,
     amountReduced: 0,
     amountPaid: 0,
-    createAt: '',
+    createdAt: '',
   };
 
   constructor(
@@ -45,12 +47,17 @@ export class CartComponent implements OnInit {
       .getActiveCartOfUser(this.utilityService.getUser().id)
       .subscribe((res: any) => {
         this.usersCart = res;
+
         this.utilityService.calculatePayment(
           this.usersCart,
           this.usersPaymentInfo
         );
+
+        this.navigationService
+          .getAllPreviousCarts(this.utilityService.getUser().id)
+          .subscribe((res: any) => {
+            this.usersPreviousCarts = res;
+          });
       });
-
-
   }
 }

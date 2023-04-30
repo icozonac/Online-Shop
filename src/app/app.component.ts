@@ -48,7 +48,8 @@ export class AppComponent implements OnInit {
     }
 
     this.utilityService.changeCart.subscribe((res: any) => {
-      this.cartItemsCount += parseInt(res);
+      if (parseInt(res) === 0) this.cartItemsCount = 0;
+      else this.cartItemsCount += parseInt(res);
     });
   }
 }

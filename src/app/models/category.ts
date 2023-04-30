@@ -87,7 +87,7 @@ export interface Payment {
   shipingCharges: number;
   amountReduced: number;
   amountPaid: number;
-  createAt: string;
+  createdAt: string;
 }
 
 export interface Order {
@@ -95,5 +95,5 @@ export interface Order {
   user: User;
   cart: Cart;
   payment: Payment;
-  crateAt: string;
+  createdAt: string;
 }
