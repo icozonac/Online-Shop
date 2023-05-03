@@ -4,7 +4,15 @@
     class="mb-4 my-shadow my-rounded-corner overflow-hidden"
   >
     <div class="product-baner">
-      <button type="button" class="btn btn-outline-light btn-lg">
+      <button
+        type="button"
+        class="btn btn-outline-light btn-lg"
+        [routerLink]="['/products']"
+        [queryParams]="{
+          category: suggestedProduct.category.category | uriEncode,
+          subcategory: suggestedProduct.category.subCategory | uriEncode
+        }"
+      >
         Shop Now
       </button>
       <img
