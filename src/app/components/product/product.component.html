@@ -124,7 +124,7 @@
         }}
       </h5>
       <button class="btn btn-outline-danger" type="button">
-        <div class="btn-content">
+        <div class="btn-content" (click)="removeFromCart(product.id)">
           <span nz-icon nzType="shopping" nzTheme="outline"></span> Remove From
           Cart
         </div>

@@ -43,6 +43,14 @@ export class CartComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.setCart();
+  }
+
+  removeFromCart(idProduct: any) {
+    this.setCart();
+  }
+
+  setCart() {
     this.navigationService
       .getActiveCartOfUser(this.utilityService.getUser().id)
       .subscribe((res: any) => {

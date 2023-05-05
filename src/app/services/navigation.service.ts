@@ -89,6 +89,11 @@ export class NavigationService {
     return this.http.post(url, null, { responseType: 'text' });
   }
 
+  removeItemFromCart(userId: number, productId: number) {
+    let url = this.baseUrl + 'RemoveCartItem/' + productId + '/' + userId;
+    return this.http.post(url, null, { responseType: 'text' });
+  }
+
   getActiveCartOfUser(userId: number) {
     let url = this.baseUrl + 'GetActiveCartOfUser/' + userId;
     return this.http.get(url);

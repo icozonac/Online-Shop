@@ -4,7 +4,7 @@ import { Cart, Product } from 'src/app/models/category';
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { User } from '../models/category';
-import { Subject } from 'rxjs';
+import { Subject, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -57,6 +57,18 @@ export class UtilityService {
       if (res.toString() === 'inserted') this.changeCart.next(1);
       else this.changeCart.next(0);
     });
+  }
+
+  removeFromCart(id: number) {
+    let userId = this.getUser().id;
+    let productId = id;
+
+    return this.navigationService.removeItemFromCart(userId, productId).pipe(
+      tap((res) => {
+        if (res.toString() === 'Removed') this.changeCart.next(-1);
+        else this.changeCart.next(0);
+      })
+    );
   }
 
   calculatePayment(cart: Cart, payment: Payment) {

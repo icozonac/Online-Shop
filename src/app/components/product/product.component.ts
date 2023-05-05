@@ -1,7 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Product } from 'src/app/models/category';
 import { UtilityService } from 'src/app/services/utility.service';
-
 
 @Component({
   selector: 'app-product',
@@ -28,8 +28,16 @@ export class AppProductComponent implements OnInit {
     },
     imageName: '',
   };
+  @Output() cartDeleted: EventEmitter<void> = new EventEmitter<void>();
 
   constructor(public utilityService: UtilityService) {}
 
   ngOnInit(): void {}
+
+  removeFromCart(id: number) {
+    this.utilityService.removeFromCart(id).subscribe((res) => {
+      
+      this.cartDeleted.emit();
+    });
+  }
 }

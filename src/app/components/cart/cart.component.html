@@ -66,6 +66,7 @@
             <app-product
               [view]="'cartItem'"
               [product]="cartItem.product"
+              (cartDeleted)="removeFromCart($event)"
             ></app-product>
           </div>
         </div>
