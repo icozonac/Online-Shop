@@ -7,7 +7,9 @@ import {
   Validators,
   FormBuilder,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import { NavigationService } from 'src/app/services/navigation.service';
+import { UtilityService } from 'src/app/services/utility.service';
 
 @Component({
   selector: 'app-register',
@@ -21,7 +23,9 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private navigationService: NavigationService
+    private navigationService: NavigationService,
+    private router: Router,
+    private utilityService: UtilityService
   ) {}
 
   ngOnInit(): void {
@@ -80,6 +84,14 @@ export class RegisterComponent implements OnInit {
       };
       this.navigationService.registerUser(user).subscribe((res: any) => {
         this.message = res.toString();
+        if (res.toString() === 'Inserted') {
+          this.navigationService
+            .loginUser(this.Email.value, this.Password.value)
+            .subscribe((res: any) => {
+              this.utilityService.setUser(res.toString());
+            });
+          this.router.navigate(['/home']);
+        }
       });
     } else {
       Object.values(this.registerForm.controls).forEach((control) => {

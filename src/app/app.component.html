@@ -99,6 +99,7 @@
           class="btn btn-outline-light d-flex align-items-center gap-1"
           (click)="utilityService.logoutUser()"
           *ngIf="utilityService.isLoggedIn()"
+          routerLink="/home"
         >
           <span nz-icon nzType="logout" nzTheme="outline"></span> Logout
         </button>

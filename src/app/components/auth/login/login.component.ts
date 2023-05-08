@@ -7,6 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { NavigationService } from 'src/app/services/navigation.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +22,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: UntypedFormBuilder,
     private navigationService: NavigationService,
-    private utilityService: UtilityService
+    private utilityService: UtilityService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -48,6 +50,7 @@ export class LoginComponent implements OnInit {
           if (res.toString() !== 'invalid') {
             this.utilityService.setUser(res.toString());
             this.isVisible = false;
+            this.router.navigate(['/home']);
           } else {
             this.message = 'Invalid Credentials';
           }

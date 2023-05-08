@@ -121,6 +121,7 @@
           type="button"
           class="btnorder btn bg-success text-white mb-3 w-50"
           (click)="placeOrder()"
+          [disabled] = "!usersCart.cartItems.length"
         >
           Proceed to Payment
         </button>

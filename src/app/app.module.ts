@@ -1,4 +1,4 @@
-import { UriEncodePipe } from './Pipes/uri-encode.pipe';
+import { UriEncodePipe } from './pipes/uri-encode.pipe';
 import { CommonsModule } from './commons/commons/commons.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
